@@ -1,0 +1,28 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:zcml="http://namespaces.zope.org/zcml"
+  xmlns:browser="http://namespaces.zope.org/browser">
+
+    <configure package="zmi.styles">
+        <browser:resourceDirectory
+            name="zmi"
+            directory="resources"
+            permission="zope.Public" />
+    </configure>
+  <configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:plone="http://namespaces.plone.org/plone">
+    <plone:CORSPolicy
+        allow_origin="*"
+        allow_methods="DELETE,GET,OPTIONS,PATCH,POST,PUT"
+        allow_credentials="true"
+        expose_headers="Content-Length,X-My-Header"
+        allow_headers="Accept,Authorization,Content-Type,X-Custom-Header,Origin,Lock-Token"
+        max_age="3600"
+    />
+  </configure>
+  <utility
+    factory=".vocabularies.principals.UsersFactory"
+    name="plone.app.vocabularies.Users"
+    />
+
+</configure>
